@@ -98,8 +98,9 @@ export function loadProgram(gl: WebGLRenderingContext, shaders: Array<WebGLShade
   const successfullyLinked = gl.getProgramParameter(program, gl.LINK_STATUS);
 
   if (!successfullyLinked) {
+    const info = gl.getProgramInfoLog(program);
     gl.deleteProgram(program);
-    throw new Error("loadProgram: error while linking the program.");
+    throw new Error(`loadProgram: error while linking the program: ${info}`);
   }
 
   return program;
