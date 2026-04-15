@@ -30,7 +30,7 @@ export default function createNodePiechartProgram<
     ...slices.flatMap(({ color }, i) => ("value" in color ? [`u_sliceColor_${i + 1}`] : [])),
   ];
 
-  return class NodeBorderProgram extends NodeProgram<(typeof UNIFORMS)[number], N, E, G> {
+  return class NodePiechartProgram extends NodeProgram<(typeof UNIFORMS)[number], N, E, G> {
     static readonly ANGLE_1 = 0;
     static readonly ANGLE_2 = (2 * Math.PI) / 3;
     static readonly ANGLE_3 = (4 * Math.PI) / 3;
@@ -59,7 +59,7 @@ export default function createNodePiechartProgram<
           ),
         ],
         CONSTANT_ATTRIBUTES: [{ name: "a_angle", size: 1, type: FLOAT }],
-        CONSTANT_DATA: [[NodeBorderProgram.ANGLE_1], [NodeBorderProgram.ANGLE_2], [NodeBorderProgram.ANGLE_3]],
+        CONSTANT_DATA: [[NodePiechartProgram.ANGLE_1], [NodePiechartProgram.ANGLE_2], [NodePiechartProgram.ANGLE_3]],
       };
     }
 
